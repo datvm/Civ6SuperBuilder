@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mod id="874518b3-c7bb-4306-a78f-770e6ef1b2da" version="1.0">
+  <Properties>
+    <Name>Super Builder - More Speed (NOT Super Scout)</Name>
+    <Description><![CDATA[Set Builder Base Movement Speed to 15. Does not require but should work well with my other MOD Super Worker: https://steamcommunity.com/sharedfiles/filedetails/?id=1725878432. Please don't abuse and use them as Scout, I may add Worker Union.]]></Description>
+    <Teaser>Empower Builder with more movement speed.</Teaser>
+    <Authors>Luke Vo</Authors>
+	<CompatibleVersions>2.0</CompatibleVersions>
+  </Properties>
+  <InGameActions>
+    <UpdateDatabase id="SuperBuilder_MoreCharges">
+	  <Properties>
+        <LoadOrder>126</LoadOrder>
+      </Properties>
+      <File>superbuilder_MoreSpeed.sql</File>
+    </UpdateDatabase>
+  </InGameActions>
+  <Files>
+    <File>superbuilder_MoreSpeed.sql</File>
+  </Files>
+</Mod>

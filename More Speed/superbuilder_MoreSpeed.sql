@@ -1,0 +1,1 @@
+UPDATE Units SET BaseMoves = 15 WHERE UnitType = 'UNIT_BUILDER';

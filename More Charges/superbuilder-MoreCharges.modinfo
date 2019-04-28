@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mod id="6023803b-134d-4982-8c90-ef209331c58f" version="1.0">
+  <Properties>
+    <Name>Super Builder - More Build Charges</Name>
+    <Description><![CDATA[Set Builder Base Charges to 999. Does not require but should work well with my other MOD Super Worker: https://steamcommunity.com/sharedfiles/filedetails/?id=1725878432]]></Description>
+    <Teaser>Empower Builder with more charges.</Teaser>
+    <Authors>Luke Vo</Authors>
+	<CompatibleVersions>2.0</CompatibleVersions>
+  </Properties>
+  <InGameActions>
+    <UpdateDatabase id="SuperBuilder_MoreCharges">
+	  <Properties>
+        <LoadOrder>126</LoadOrder>
+      </Properties>
+      <File>superbuilder_MoreCharges.sql</File>
+    </UpdateDatabase>
+  </InGameActions>
+  <Files>
+    <File>superbuilder_MoreCharges.sql</File>
+  </Files>
+</Mod>

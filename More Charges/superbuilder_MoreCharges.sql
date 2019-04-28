@@ -1,0 +1,1 @@
+UPDATE Units SET BuildCharges = 999 WHERE UnitType = 'UNIT_BUILDER';
