@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mod id="76bdbf89-f21b-4136-9bd0-96d2e7b39bb9" version="1.5">
+<Mod id="76bdbf89-f21b-4136-9bd0-96d2e7b39bb9" version="1.6">
   <Properties>
     <Name>Super Builder</Name>
     <Description> <![CDATA[Supercharge your Builders! Make their life better (or worse)!
 
-* NEW UPDATE: Builders can now ignore terrain cost.
-* Base Movement Speed increased to 4, Base Charges increased to 6.
+* NEW UPDATE: Builders can now build Fishery without the Governor. You still get +1 Production bonus if the Governor with the Aquaculture Promotion is there. Known issue: if you give her the promotion, the existing Fishery won't provide the Production bonus, you have to either re-establish her or rebuild/build new Fisheries. TIP: you can move her to a city and move back, it should cost you 0 turn.
+* Builders can now ignore terrain cost. Base Movement Speed increased to 4, Base Charges increased to 6.
 * Your Builders can now build everything Military Engineer can (Roads/Railroads, Forts, Airstrips, Missile Silos and Mountain Tunnels).
 * Removed technology requirements for building Fort, removing Features (Woods, Rainforests and Mashes), harvesting Resources (Bananas, Rice, etc).
 * You can now plant Woods at State Workforce civic.

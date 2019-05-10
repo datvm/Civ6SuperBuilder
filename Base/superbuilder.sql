@@ -41,3 +41,6 @@ INSERT INTO Requirements (RequirementId, RequirementType, Inverse) VALUES
 	('REQUIRES_UNIT_IS_BUILDER', 'REQUIREMENT_UNIT_TYPE_MATCHES', 0);
 INSERT INTO RequirementArguments (RequirementId, Name, Value) VALUES
 	('REQUIRES_UNIT_IS_BUILDER', 'UnitType', 'UNIT_BUILDER');
+	
+-- Fishery without Governor
+UPDATE Improvements SET TraitType = NULL WHERE ImprovementType = "IMPROVEMENT_FISHERY";
