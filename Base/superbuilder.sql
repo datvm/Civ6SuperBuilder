@@ -1,5 +1,4 @@
 UPDATE Units SET BaseMoves = 4, BuildCharges = 6 WHERE UnitType = 'UNIT_BUILDER';
-UPDATE Improvements SET PrereqTech = NULL WHERE ImprovementType = 'IMPROVEMENT_FORT';
 UPDATE Features SET AddCivic = 'CIVIC_STATE_WORKFORCE' WHERE FeatureType = 'FEATURE_FOREST';
 UPDATE Features SET RemoveTech = NULL WHERE Removable = 1;
 UPDATE Resource_Harvests SET PrereqTech = NULL;
@@ -44,3 +43,28 @@ INSERT INTO RequirementArguments (RequirementId, Name, Value) VALUES
 	
 -- Fishery without Governor
 UPDATE Improvements SET TraitType = NULL WHERE ImprovementType = "IMPROVEMENT_FISHERY";
+
+-- Earlier Forts for Human Players
+---- Remove Fort from tech tree and buildable
+UPDATE Improvements SET PrereqTech = NULL, TraitType = 'TRAIT_CIVILIZATION_NO_PLAYER' WHERE ImprovementType = 'IMPROVEMENT_FORT';
+
+---- Requirement: is human or has Siege Tactics
+INSERT OR IGNORE INTO Requirements(RequirementId, RequirementType, ProgressWeight) VALUES
+	('REQUIRES_TECH_SIEGE_TACTICS', 'REQUIREMENT_PLAYER_HAS_TECHNOLOGY', 1);
+INSERT OR IGNORE INTO RequirementArguments(RequirementId, Name, Type, Value) VALUES
+	('REQUIRES_TECH_SIEGE_TACTICS', 'TechnologyType', 'ARGTYPE_IDENTITY', 'TECH_SIEGE_TACTICS');
+INSERT INTO RequirementSets(RequirementSetId, RequirementSetType) VALUES
+	('FORT_PLAYER_IS_HUMAN_OR_HAS_SIEGE_TACTICS', 'REQUIREMENTSET_TEST_ANY');
+INSERT INTO RequirementSetRequirements(RequirementSetId, RequirementId) VALUES
+	('FORT_PLAYER_IS_HUMAN_OR_HAS_SIEGE_TACTICS', 'REQUIRES_PLAYER_IS_HUMAN'),
+	('FORT_PLAYER_IS_HUMAN_OR_HAS_SIEGE_TACTICS', 'REQUIRES_TECH_SIEGE_TACTICS');
+
+---- Modifiers: Grant Fort if requirements are met
+INSERT INTO Modifiers(ModifierId, ModifierType, OwnerRequirementSetId) VALUES
+	('GRANT_IMPROVEMENT_FORT', 'MODIFIER_PLAYER_ADJUST_VALID_IMPROVEMENT', 'FORT_PLAYER_IS_HUMAN_OR_HAS_SIEGE_TACTICS');
+INSERT INTO ModifierArguments(ModifierId, Name, Type, Value) VALUES
+	('GRANT_IMPROVEMENT_FORT', 'ImprovementType', 'ARGTYPE_IDENTITY', 'IMPROVEMENT_FORT');
+	
+---- Grant modifier for every major civ
+INSERT INTO TraitModifiers (TraitType, ModifierId) VALUES
+	('TRAIT_LEADER_MAJOR_CIV', 'GRANT_IMPROVEMENT_FORT');
